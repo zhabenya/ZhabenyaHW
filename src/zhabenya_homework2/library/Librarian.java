@@ -9,12 +9,13 @@ public class Librarian extends User {
 
     Scanner scanner = new Scanner(System.in);
 
-    private Librarian(String name, String lastName) {
-        super(name, lastName);
+    protected Librarian(String name, String username) {
+        super(name, username);
     }
 
     public static void login() {
-        System.out.println("Enter your name:");
+        System.out.println("Enter your username:");
+
     }
 
     public void openLibMenu(){

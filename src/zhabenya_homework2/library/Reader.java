@@ -5,19 +5,15 @@ package zhabenya_homework2.library;
  */
 public class Reader extends User {
 
-    private int userId = 1;
     public int maxBooksCount = 3; //public so Librarian can change it
 
-    public Reader(String name, String lastName, int pass) {
-        super(name, lastName);
-        setUserId(userId);
-        setPass(pass);
+    protected Reader(String name, String username) {
+        super(name, username);
     }
 
-    private int setUserId(int userId) {
-        this.userId = userId;
-        userId++;
-        return userId;
+    @Override
+    public boolean equals(String username) {
+        return this.getUsername().equals(username);
     }
 
     public int takeBook(String name){
