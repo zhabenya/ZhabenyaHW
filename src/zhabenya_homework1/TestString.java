@@ -1,4 +1,4 @@
-package HomeWork1;
+package zhabenya_homework1;
 
 public class TestString {
 
