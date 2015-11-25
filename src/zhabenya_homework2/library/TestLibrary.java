@@ -13,9 +13,14 @@ public class TestLibrary extends Library {
         myLibrary.librarian.setPass(9871);
 
         myLibrary.createReader("Harry Potter", "potter", 934);
+        myLibrary.createReader("1", "1", 111);
+
+        myLibrary.addBook("Harry Potter", "J.K.Rowling", 1998);
+        myLibrary.addBook("Harry Potter 2", "J.K.Rowling", 2000);
 
         myLibrary.enter();
 
+        myLibrary.seeAllBooks();
 
     }
 

@@ -11,6 +11,7 @@ public class User {
     private String username;
     private int pass;
 
+
     public User(String name, String username) {
         this.name = name;
         this.username = username;
@@ -35,10 +36,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "{" +
-                "name='" + name + '\'' +
-                ", username='" + username + '\'' +
-                '}';
+        return name + ", username - '" + username;
     }
 }
 
