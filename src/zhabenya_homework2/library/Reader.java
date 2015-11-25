@@ -11,12 +11,7 @@ public class Reader extends User {
         super(name, username);
     }
 
-    @Override
-    public boolean equals(String username) {
-        return this.getUsername().equals(username);
-    }
-
-    public int takeBook(String name){
+    public void takeBook(String name){
 
     }
 

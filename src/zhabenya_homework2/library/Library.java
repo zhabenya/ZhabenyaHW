@@ -9,36 +9,38 @@ import java.util.Scanner;
 public class Library {
 
     Scanner scanner = new Scanner(System.in);
-    Librarian librarian1;
+    Librarian librarian;
     ArrayList<Book> books = new ArrayList<>();
     ArrayList<Reader> readers = new ArrayList<>();
 
     protected void createLibrarian(String name, String username){
-        librarian1 = new Librarian(name, username);
+        librarian = new Librarian(name, username);
     }
 
-    protected void createReader(String name, String username){
-        readers.add(new Reader(name, username));
+    protected void createReader(String name, String username, int pass){
+        Reader newReader = new Reader(name, username);
+        readers.add(newReader);
+        newReader.setPass(pass);
     }
 
-    public void start(){
+    protected void enter(){
+        User loggedUser = login();
+        if (loggedUser instanceof Reader) {
 
-        login();
+            Reader loggedReader = (Reader) loggedUser;
 
-        /*System.out.println("Welcome to My Library! \n" +
-                "Who are you?\n" +
-                "1. Librarian\n" +
-                "2. Reader");
-        int choice1 = scanner.nextInt();
-        switch (choice1){
-            case 1: login();
-                break;
-            case 2: login();
-                break;
-            default:
-                System.out.println("Sorry, we don't have this option. Try again!");
-                start();
-        }*/
+        } else if (loggedUser instanceof Librarian){
+
+            librarian = (Librarian) loggedUser;
+            librarian.showMenu();
+            scanner.nextInt();
+
+        } else {
+
+            System.out.println("Incorrect data. Please, try again!");
+            login();
+
+        }
 
     }
 
@@ -48,17 +50,18 @@ public class Library {
         System.out.println("Enter your password:");
         int pass = scanner.nextInt();
 
-        if (username.equals(librarian1.getName()) && pass == librarian1.getPass()){
-            return librarian1;
+        if (username.equals(librarian.getUsername()) && pass == librarian.getPass()){
+            return librarian;
         } else {
-            for (int i = 0; i < readers.size(); i++) {
-                if (readers.equals.us
+            for (Reader reader : readers) {
+                if (reader.getUsername().equals(username) && pass == reader.getPass()){
+                    System.out.printf("Hello, %s", reader.getName());
+                    return reader;
+                }
             }
-
         }
-
+        return null;
     }
-
 
 
     public void addBookManually(){
@@ -73,13 +76,13 @@ public class Library {
         System.out.println();
     }
 
-    public Book addBook(String name, String author, int year){
-
+    public void addBook(String name, String author, int year){
+        books.add(new Book(name, author, year));
     }
 
     public void showAvailableBooks(){
 
     }
 
-    public void addReader
+    public void addReader(){}
 }

@@ -9,11 +9,13 @@ public class TestLibrary extends Library {
 
         Library myLibrary = new Library();
 
-        myLibrary.createLibrarian("MrsX", "witch");
-        myLibrary.librarian1.setPass(9871);
+        myLibrary.createLibrarian("Hermione Granger", "witch");
+        myLibrary.librarian.setPass(9871);
 
-        myLibrary.createReader("Harry", "potter");
-        myLibrary.readers;
+        myLibrary.createReader("Harry Potter", "potter", 934);
+
+        myLibrary.enter();
+
 
     }
 
