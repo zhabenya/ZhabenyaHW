@@ -7,38 +7,36 @@ import java.util.Scanner;
  */
 public class Librarian extends User {
 
+    protected Library library;
+    private LibrarianMenu menu = new LibrarianMenu(library);
+
     Scanner scanner = new Scanner(System.in);
 
-    protected Librarian(String name, String username) {
+    public Librarian(String name, String username, Library library) {
         super(name, username);
+        this.library = library;
     }
 
-    public void showMenu(){
+    public int showMenu(){
         System.out.printf("Hello, %s\n", getName());
-        System.out.println("Choose your action\n" +
-                "1. See all books\n" +
-                "2. See all book by author\n" +
-                "3. See all books taken from library\n" +
-                "4. See all books taken by reader\n" +
-                "5. See all books published after\n" +
-                "6. Add new book\n" +
-                "7. See all reader\n" +
-                "8. See all readers in blacklist\n" +
-                "9. Add new reader\n" +
-                "10. Give reader the book\n");
-    }
+        int choice = menu.load();
+        switch (choice){
+            case 1:
+                library.seeAllBooks();
+                break;
+            case 2:
+                System.out.println("Enter author's name");
+                String author = scanner.next();
 
-    public Book addBookManually(){
-        System.out.println("Enter new book info");
-        System.out.println("Book name");
-        String name = scanner.next();
-        System.out.println("Book author");
-        String author = scanner.next();
-        System.out.println("Year edition");
-        int year = scanner.nextInt();
-        return new Book(name, author, year);
-    }
+                library.showBooksByAuthor();
 
+
+
+            default:
+                System.out.println("Incorrect value. Try again!");
+                showMenu();
+        }
+    }
 
 
 }

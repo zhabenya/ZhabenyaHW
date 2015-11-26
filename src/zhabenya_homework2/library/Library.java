@@ -14,7 +14,7 @@ public class Library {
     ArrayList<Reader> readers = new ArrayList<>();
 
     protected void createLibrarian(String name, String username){
-        librarian = new Librarian(name, username);
+        librarian = new Librarian(name, username, this);
     }
 
     protected void createReader(String name, String username, int pass){
@@ -31,9 +31,8 @@ public class Library {
 
         } else if (loggedUser instanceof Librarian){
 
-            librarian = (Librarian) loggedUser;
+            Librarian librarian = (Librarian) loggedUser;
             librarian.showMenu();
-            scanner.nextInt();
 
         } else {
 
@@ -130,6 +129,8 @@ public class Library {
                 System.out.println(book);
             }
         }
+        System.out.println("Sorry we don't have book of this author");;
+
     }
 
     public void showNewBooks(int year){
