@@ -7,31 +7,34 @@ public class Reader extends User {
 
     protected boolean isBlacklisted;
     protected int booksTaken;
+    protected ReaderMenu menu;
 
     public int maxBooksPermitted = 3; //public so Librarian can change it
 
-    protected Reader(String name, String username) {
+    protected Reader(String name, String username, Library library) {
         super(name, username);
         setBlacklisted(false);
+        menu = new ReaderMenu(library, this);
     }
 
-    public boolean isBlacklisted() {
+    protected boolean isBlacklisted() {
         return isBlacklisted;
     }
 
-    public void setBlacklisted(boolean blacklisted) {
+    protected void setBlacklisted(boolean blacklisted) {
         isBlacklisted = blacklisted;
     }
 
-    public void takeBook(String name){
-
+    protected boolean canTakeBooks(){
+        if (isBlacklisted) {
+            System.out.println("Sorry! Not allowed to take books.");
+            return false;
+        } else if (booksTaken >= maxBooksPermitted) {
+            System.out.println("Taken books limit reached. Please, return books to the library!");
+            return false;
+        } else {
+            return true;
+        }
     }
 
-    public void giveBookBack(){
-
-    }
-
-    protected boolean canTakeMoreBooks(){
-        return booksTaken < maxBooksPermitted;
-    }
 }
