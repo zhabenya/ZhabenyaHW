@@ -1,0 +1,3 @@
+Through redirection you can direct the input and output
+of a command to and from other files and programs,
+and chain commands together in a pipeline.

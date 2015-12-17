@@ -1,0 +1,3 @@
+The command line is a text interface
+for the computer's operating system.
+To access the command line, we use the terminal.

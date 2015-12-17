@@ -1,0 +1,6 @@
+Usage: ls [OPTION]...
+List information about the FILEs (the current directory by default).
+
+-a              do not ignore entries starting with . (hidden files)
+-t              show with created date
+-s              print the allocated size of each file
